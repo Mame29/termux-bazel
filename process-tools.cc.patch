@@ -1,0 +1,14 @@
+--- ./src/main/tools/process-tools.cc.old	2023-01-18 15:10:35.054531683 +0700
++++ ./src/main/tools/process-tools.cc	2023-01-18 15:00:00.314531645 +0700
+@@ -217,7 +217,11 @@
+     // Discard any zombies that we may get when the child subreaper feature is
+     // enabled.
+     do {
++#if defined(HAVE_WAIT3)
+       err = wait3(&status, 0, rusage);
++#else
++      err = wait4(-1, &status, 0, rusage);
++#endif
+     } while (err != pid || (err == -1 && errno == EINTR));
+   } else {
+     do {

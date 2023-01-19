@@ -1,0 +1,28 @@
+--- ./src/main/tools/BUILD.old	2023-01-18 20:18:31.106736472 +0700
++++ ./src/main/tools/BUILD	2023-01-18 20:20:18.618736479 +0700
+@@ -76,12 +76,7 @@
+         "//src/conditions:openbsd": ["dummy-sandbox.c"],
+         "//src/conditions:windows": ["dummy-sandbox.c"],
+         "//conditions:default": [
+-            "linux-sandbox.cc",
+-            "linux-sandbox.h",
+-            "linux-sandbox-options.cc",
+-            "linux-sandbox-options.h",
+-            "linux-sandbox-pid1.cc",
+-            "linux-sandbox-pid1.h",
++            "dummy-sandbox.c",
+         ],
+     }),
+     linkopts = select({
+@@ -99,10 +94,7 @@
+         "//src/conditions:freebsd": [],
+         "//src/conditions:openbsd": [],
+         "//src/conditions:windows": [],
+-        "//conditions:default": [
+-            ":logging",
+-            ":process-tools",
+-        ],
++        "//conditions:default": [],
+     }),
+ )
+ 

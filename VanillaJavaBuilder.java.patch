@@ -1,0 +1,11 @@
+--- ./src/java_tools/buildjar/java/com/google/devtools/build/buildjar/VanillaJavaBuilder.java.old	2023-01-18 21:14:47.506736674 +0700
++++ ./src/java_tools/buildjar/java/com/google/devtools/build/buildjar/VanillaJavaBuilder.java	2023-01-18 21:17:52.394736685 +0700
+@@ -78,7 +78,7 @@
+   private FileSystem getJarFileSystem(Path sourceJar) throws IOException {
+     FileSystem fs = filesystems.get(sourceJar);
+     if (fs == null) {
+-      filesystems.put(sourceJar, fs = FileSystems.newFileSystem(sourceJar, null));
++      filesystems.put(sourceJar, fs = FileSystems.newFileSystem(sourceJar, (ClassLoader) null));
+     }
+     return fs;
+   }
